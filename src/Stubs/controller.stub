@@ -1,0 +1,81 @@
+<?php
+
+namespace DummyNamespace;
+
+use Illuminate\Http\Request;
+
+// use DummyRootNamespaceHttp\Requests;
+use DummyRootNamespaceHttp\Controllers\Controller;
+use DummyRootNamespaceModels\DummyModel;
+use DummyRootNamespaceHttp\Requests\DummyModelRequest;
+
+class DummyClass extends Controller
+{
+
+    public function index(Request $request){
+
+      DummyCreateVariable$ = [];
+      $query = DummyModel::select();
+      // if has search
+      //if($request->has('q')){
+      //    $q = $request->input('q');
+      //    $query->where('name','like','%'.$q.'%');
+      //}
+
+      // if has sorting
+      if($request->has('sorting')){
+          $sorting = $request->input('sorting');
+          foreach ($sorting as $key => $value) {
+              $query->orderBy($key,$value);
+          }
+      }
+      // if has pagination
+      if($request->has('count')){
+          $count = $request->input('count');
+          DummyCreateVariable$ = $query->paginate($count);
+      }else{
+          DummyCreateVariable$ = $query->get();
+          return response()->json(['data'=>DummyCreateVariable$]);
+      }
+
+      return response()->json(DummyCreateVariable$);
+
+    }
+
+    public function create()
+    {
+      //
+    }
+
+
+    public function store(DummyModelRequest $request)
+    {
+        DummyCreateVariableSing$ = new DummyModel;
+        DummyUpdate
+        DummyCreateVariableSing$->save();
+
+        return response()->json(DummyCreateVariableSing$, 201);
+    }
+
+    public function edit($id)
+    {
+      //
+    }
+
+    public function update(Request $request, $id)
+    {
+      DummyCreateVariableSing$ = DummyModel::findOrFail($id);
+      DummyUpdate
+
+      DummyCreateVariableSing$->save();
+      return response()->json(DummyCreateVariableSing$, 200);
+    }
+
+    public function destroy($id)
+    {
+      DummyCreateVariableSing$ = DummyModel::findOrFail($id);
+      DummyCreateVariableSing$->delete();
+      return response()->json(null, 204);
+    }
+
+}

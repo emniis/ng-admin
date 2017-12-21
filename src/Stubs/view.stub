@@ -1,0 +1,96 @@
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1> DummyRoute <small>La liste de toutes les DummyRoute</small></h1>
+      <ol class="breadcrumb">
+        <li><a href="#/"><i class="fa fa-dashboard"></i> Accueil</a></li>
+        <li><a href="#/DummyRoute">DummyFormScope</a></li>
+        <li class="active">Liste</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- Default box -->
+      <div class="box">
+        <div class="box-header with-border">
+          <h3 class="box-title"><button type="button" class="btn btn-success btn-flat" ng-click="add()"> {{ __('ng-admin.add_new')}} </button></h3>
+               <div class="box-tools pull-right">
+                  <div class="has-feedback">
+                    <input type="text" ng-model="searchQuery" ng-change="go()" class="form-control input-sm" placeholder="{{ __('ng-admin.search')}} ...">
+                    <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                  </div>
+                </div><!-- /.box-tools -->
+
+        </div>
+        <div class="box-body">
+
+
+              <div loading-container="tableParams.settings().$loading">
+                <table ng-table="tableParams" class="table table-condensed table-bordered table-striped">
+                  <tr ng-repeat="row in $data">
+                    DummyHeaderTable
+                    <td data-title="'Action'">
+                      <button ng-click="edit($index)" class="btn btn-default btn-xs">
+                        <i class="fa fa-pencil"></i> {{ __('ng-admin.edit')}}
+                      </button>
+                      <button ng-click="detail($index)" class="btn btn-default btn-xs">
+                        <i class="fa fa-search"></i> {{ __('ng-admin.detail')}}
+                      </button>
+                      <button ng-click="delete(row.id)" class="btn btn-default btn-xs">
+                        <i class="fa fa-remove"></i> {{ __('ng-admin.delete')}}
+                      </button>
+                    </td>
+                  </tr>
+                </table>
+            </div>
+
+        </div>
+      </div>
+      <!-- /.box -->
+
+    </section>
+    <!-- /.content -->
+
+
+<script type="text/ng-template" id="DetailModalContent.html">
+        <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" ng-click="close()">
+                  <span aria-hidden="true">&times;</span></button>
+            <h3 class="modal-title"> Detail DummyFormScope</h3>
+        </div>
+        <div class="modal-body">
+
+            <table  class="table table-bordered table-hover ng-table-responsive">
+                DummyDetailFields
+            </table>
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-info  pull-left" type="button" ng-click="close()">{{ __('ng-admin.close')}} </button>
+        </div>
+</script>
+
+<script type="text/ng-template" id="FormModalContent.html">
+        <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" ng-click="close()">
+                  <span aria-hidden="true">&times;</span></button>
+            <h3 class="modal-title"> Formulaire DummyFormScope</h3>
+        </div>
+        <div class="modal-body">
+
+            <!-- form start -->
+            <form id="category" name="DummyFormScope" class="form-horizontal">
+
+                DummyFormFields
+
+              <!-- /.box-body -->
+            </form>
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" validation-submit="DummyFormScope"  ng-click="save()">{{ __('ng-admin.save')}} </button>
+            <button class="btn btn-default pull-left" type="button" ng-click="close()">{{ __('ng-admin.cancel')}} </button>
+        </div>
+</script>

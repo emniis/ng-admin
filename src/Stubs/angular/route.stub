@@ -1,0 +1,16 @@
+            .when('/DummyRoute', {
+                title:"DummyTitle",
+                templateUrl: APP_VIEWS_BASE+'DummyRoute',
+                controller: 'DummyController',
+                resolve: {
+                    lazy: ['$ocLazyLoad', function($ocLazyLoad) {
+                        return $ocLazyLoad.load({
+                            name: 'admin',
+                            files: [
+                                BASE+'ng-admin/DummyFileName-controller.js'
+                            ]
+                        });
+                    }]
+                }
+            })
+/** crudgen dont remove **/

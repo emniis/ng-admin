@@ -1,0 +1,7 @@
+        .service("DummyService", ["$resource", function($resource) {
+                return $resource(API+"DummyRoute/:id" ,{id: '@id'}, {
+                      query: {method: 'get', isArray: false, cancellable: true},
+                        update: { method:'PUT' }
+                    });
+        }])
+/** crudgen dont remove **/

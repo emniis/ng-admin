@@ -1,0 +1,149 @@
+angular.module('admin')
+     .controller('DummyController',function($rootScope, $scope, $http, $resource, $uibModal, NgTableParams, DummyService){
+
+                $scope.delete = function (id) {
+                	if(confirm(MSG.DEL_ONE_CONFIRM)){
+                            DummyService.delete({id: id}).$promise.then(function(data) {
+                                        toastr.success(MSG.OP_GOOD);
+                                        $rootScope.$broadcast('DummyEvent');
+                                });
+                	}
+
+                };
+
+                $scope.add = function () {
+                     $scope.record = {};
+                     var modalInstance = $uibModal.open({
+                       templateUrl: 'FormModalContent.html',
+                       controller: 'DummyClassEditController',
+                       size: 'lg',
+                       backdrop:'static',
+                       resolve:{
+                       		item: {
+                       			id:null,
+                       			DummyFields
+                       		}
+                       }
+                     });
+                };
+
+                $scope.edit = function (index) {
+                     $scope.record = $scope.tableParams.data[index];
+                     var modalInstance = $uibModal.open({
+                       templateUrl: 'FormModalContent.html',
+                       controller: 'DummyClassEditController',
+                       size: 'lg',
+                       backdrop:'static',
+                       resolve:{
+                       		item: $scope.record
+                       }
+                     });
+                };
+
+                $scope.detail = function (index) {
+                    $scope.record =  $scope.tableParams.data[index];
+                     var modalInstance = $uibModal.open({
+                       templateUrl: 'DetailModalContent.html',
+                       controller: 'DetailModalController',
+                       size: 'lg',
+                       resolve:{
+                       		item: $scope.record
+                       }
+                     });
+
+               };
+                $scope.tableParams = new NgTableParams({
+
+                    page: 1,            // show first page
+                    count: 10,          // count per page
+                    sorting: {
+                        id: 'desc'     // initial sorting
+                    },
+                    q: $scope.searchQuery
+
+                }, {
+                    total: 0,           // length of data
+                    getData: function(params) {
+
+                    	return DummyService.get(params.url()).$promise.then(function(data) {
+                                        params.total(data.total); // recal. page nav controls
+                                        return data.data;
+                                });
+
+                    }
+
+                });
+
+                $scope.refresh = function(){
+                    $scope.tableParams.reload();
+                };
+                $scope.go = function(){
+                    if ($scope.searchQuery.length <3 && $scope.searchQuery.length!=0) {
+                      return ;
+                    }
+                    $scope.tableParams = new NgTableParams({
+                        page: 1,            // show first page
+                        count: 10,          // count per page
+                        sorting: {
+                            id: 'desc'     // initial sorting
+                        },
+                        q: $scope.searchQuery
+
+                    }, {
+                        total: 0,           // length of data
+                        getData: function(params) {
+
+                          return DummyService.get(params.url()).$promise.then(function(data) {
+                                            params.total(data.total); // recal. page nav controls
+                                            return data.data;
+                                    });
+
+                        }
+
+                    });
+                };
+
+                $scope.$on('DummyEvent', function (event, data) {
+      				    	$scope.refresh();
+      				});
+
+        })
+     	.controller('DummyClassEditController', function ($rootScope, $scope, $uibModalInstance, DummyService, item) {
+     			// $scope.categories = categories;
+	          	$scope.save = function(){
+	          		if(item.id){
+	          			$scope.update();
+	          		}else{
+	          			$scope.create();
+	          		}
+	          	};
+
+		        $scope.create = function(){
+
+		        	DummyService.save($scope.record).$promise.then(function(data) {
+                                        toastr.success(MSG.OP_GOOD);
+                                        $rootScope.$broadcast('DummyEvent');
+                                        $scope.close();
+                                }, function (err) {
+                                	$scope.errors = err;
+	                                });
+
+                };
+
+                $scope.update = function(){
+                    	DummyService.update($scope.record).$promise.then(function(data) {
+                                        toastr.success(MSG.OP_GOOD);
+                                        $rootScope.$broadcast('DummyEvent');
+                                        $scope.close();
+                                }, function (err) {
+                                	$scope.errors = err;
+	                                });
+                };
+
+
+	          $scope.close = function () {
+	            $uibModalInstance.close();
+	          };
+            $scope.record = item;
+
+    	});
