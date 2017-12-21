@@ -15,7 +15,7 @@ The next required step is to add the service provider to config/app.php :
 
 The next required step is to publish views and assets in your application with :
 ```
-    php artisan vendor:publish "Emniis\NgAdmin\NgAdminServiceProvider"
+    php artisan vendor:publish --provider="Emniis\NgAdmin\NgAdminServiceProvider"
 ```
 ### Install npm dependencies  ###
 The last step is to install ng-admin npm dependencies in laravel public directory (laravel-app-directory/public/)
