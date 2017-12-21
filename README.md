@@ -1,7 +1,7 @@
 # ng-admin
 Laravel admin panel based on angular Js
 ### Installation ###
-Add Scafold to your composer.json file to require Scafold :
+Add ng admin to your composer.json file to require ng-admin :
 ```
     require : {
         "laravel/framework": "5.4.*",
