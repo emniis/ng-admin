@@ -1,7 +1,7 @@
 # ng-admin
 Laravel admin panel based on angular Js
 ### Installation ###
-Add ng admin to your composer.json file to require ng-admin :
+Add Ng Admin to your composer.json file to require ng-admin :
 ```
     require : {
         "laravel/framework": "5.4.*",
@@ -21,10 +21,13 @@ The next required step is to add the service provider to config/app.php :
 
 ### Publish ###
 
-The last required step is to publish views and assets in your application with :
+The next required step is to publish views and assets in your application with :
 ```
     php artisan vendor:publish "Emniis\NgAdmin\NgAdminServiceProvider"
 ```
-
+### Install npm dependencies  ###
+The last step is to install ng-admin npm dependencies in laravel public directory (laravel-app-directory/public/)
+```
+    npm install
+```
 Congratulations, you have successfully installed NG Admin !
-
