@@ -245,38 +245,34 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery 2.2.3 -->
-<script src="/node_modules/admin-lte/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!-- jQuery  -->
+<script src="/node_modules/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.6  -->
-<script src="/node_modules/admin-lte/bootstrap/js/bootstrap.min.js"></script>
+<script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- SlimScroll -->
-<script src="/node_modules/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="/node_modules/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 
-<script src="/node_modules/admin-lte/plugins/morris/morris.min.js"></script>
-<!-- Sparkline -->
-<script src="/node_modules/admin-lte/plugins/sparkline/jquery.sparkline.min.js"></script>
+<script src="/node_modules/morris.js/morris.min.js"></script>
+{{-- <!-- Sparkline -->
+<script src="/node_modules/admin-lte/plugins/sparkline/jquery.sparkline.min.js"></script> --}}
 <!-- jvectormap -->
 <script src="/node_modules/admin-lte/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
 <script src="/node_modules/admin-lte/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-<!-- jQuery Knob Chart -->
-<script src="/node_modules/admin-lte/plugins/knob/jquery.knob.js"></script>
-<!-- FastClick -->
-<script src="/node_modules/admin-lte/plugins/fastclick/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="/node_modules/admin-lte/dist/js/app.min.js"></script>
 
-<!-- Admin app scripts -->
+{{-- <!-- FastClick -->
+<script src="/node_modules/admin-lte/plugins/fastclick/fastclick.js"></script> --}}
+<!-- AdminLTE App -->
+<script src="/node_modules/admin-lte/dist/js/adminlte.min.js"></script>
+<script src="/node_modules/admin-lte/dist/js/demo.js"></script>
+
+<!-- Angular dependencies scripts for app -->
     <script src="/node_modules/toastr/build/toastr.min.js" type="text/javascript"></script>
     <script src="/node_modules/angular/angular.min.js" type="text/javascript"></script>
     <script src="/node_modules/angular-i18n/angular-locale_fr-ci.js"></script>
-    {{-- <script src="/node_modules/admin-lte/app/angular-messages.min.js" type="text/javascript"></script> --}}
-    {{-- <script src="/node_modules/admin-lte/app/angular-bootstrap-material.min.js" type="text/javascript"></script> --}}
-    {{-- <script src="/node_modules/admin-lte/app/angular-animate.min.js" type="text/javascript"></script> --}}
     <script src="/node_modules/angular-route/angular-route.min.js" type="text/javascript"></script>
     <script src="/node_modules/angular-resource/angular-resource.min.js" type="text/javascript"></script>
     <script src="/node_modules/angular-sanitize/angular-sanitize.min.js" type="text/javascript"></script>
     <script src="/node_modules/oclazyload/dist/ocLazyLoad.min.js" type="text/javascript"></script>
-
     <script src="/node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js" type="text/javascript"></script>
     <script src="/node_modules/ng-file-upload/dist/ng-file-upload-all.min.js" type="text/javascript"></script>
     <script src="/node_modules/ng-infinite-scroll/build/ng-infinite-scroll.min.js" type="text/javascript"></script>
@@ -287,44 +283,19 @@
     <script src="/node_modules/angular-validation/dist/angular-validation.min.js" type="text/javascript"></script>
     <script src="/node_modules/angular-validation/dist/angular-validation-rule.min.js" type="text/javascript"></script>
     <script src="/node_modules/ui-select/dist/select.min.js" type="text/javascript"></script>
-
-   {{--  <script src="angular.js"></script> --}}
-
-<script src="/node_modules/moment/min/moment-with-locales.min.js"></script>
-<script src="/node_modules/angular-moment-picker/dist/angular-moment-picker.min.js"></script>
+    <script src="/node_modules/moment/min/moment-with-locales.min.js"></script>
+    <script src="/node_modules/angular-moment-picker/dist/angular-moment-picker.min.js"></script>
     <script src="/node_modules/angular-ckeditor/bower_components/ckeditor/ckeditor.js"></script>
     <script src="/node_modules/angular-ckeditor/angular-ckeditor.js"></script>
-
     <script src="/node_modules/angular-file-upload/dist/angular-file-upload.min.js"></script>
-{{-- <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js'></script> --}}
-  {{--
-<script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyBDmhxmcR9r07EstkoIC50gEqPUQLR4iJk",
-    authDomain: "project-5981106959592125360.firebaseapp.com",
-    databaseURL: "https://project-5981106959592125360.firebaseio.com",
-    storageBucket: "project-5981106959592125360.appspot.com",
-  };
-  firebase.initializeApp(config);
-</script>
-
-<!-- AngularFire -->
-<script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
- --}}
-
-  <script src="/ng-admin/boot.js" type="text/javascript"></script>
-  <script src="/ng-admin/services.js" type="text/javascript"></script>
-  <script src="/ng-admin/directives.js" type="text/javascript"></script>
-{{--
-     <script>
-        //var socket = io('http://localhost:3000');
-        var socket = io('http://localhost:3000');
-        socket.on("article-channel:App\\Events\\AddArticle", function(message){
-            // increase the power everytime we load test route
-            console.log("un article a été ajouté");
-        });
-    </script> --}}
+    <!-- Application scripts -->
+    <script src="/ng-admin/boot.js" type="text/javascript"></script>
+    <script src="/ng-admin/services.js" type="text/javascript"></script>
+    <script src="/ng-admin/directives.js" type="text/javascript"></script>
+    <script>
+      $(document).ready(function () {
+        $('.sidebar-menu').tree()
+      })
+    </script>
 </body>
 </html>
