@@ -67,7 +67,7 @@ class NgAdminCrud extends Command
 
   protected function initData()
   {
-    $crud = $this->argument('crud');
+    $crud = strtolower($this->argument('crud'));
     $this->crud_name['crud'] = $crud;
     $this->crud_name['singular']=str_singular($crud);
     $this->crud_name['plural']=str_plural($crud);
@@ -142,7 +142,7 @@ class NgAdminCrud extends Command
   }
 
   protected function genModel($migration=true){
-    // create model from default comman line
+    // create model from default command line
     $this->call('make:model', ['name' => 'Models\\'.$this->crud_name['model']]);
 
     if($migration){
@@ -220,7 +220,6 @@ class NgAdminCrud extends Command
 
     protected function genNgScripts(){
       $controller_stub= file_get_contents($this->getStubPath().'/angular/controller.stub');
-      // $controller_stub = str_replace('DummyClass', $this->crud_name['controller'], $controller_stub);
       $controller_stub = str_replace('DummyController', $this->crud_name['ng_controller'], $controller_stub);
       $controller_stub = str_replace('DummyService', $this->crud_name['ng_service'], $controller_stub);
       $controller_stub = str_replace('DummyEvent', $this->crud_name['ng_event'], $controller_stub);
