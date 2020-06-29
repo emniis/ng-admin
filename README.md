@@ -1,6 +1,10 @@
 # ng-admin
 Laravel admin panel based on angular Js that include a CRUD generator.
 
+This is compatible with  :
+- Angular Js 1.8
+- Laravel 5.4 +
+
 ### Installation ###
 Add Ng Admin to your laravel project via composer:
 ```

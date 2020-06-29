@@ -1,12 +1,12 @@
 {
     "name": "emniis/ng-admin",
-    "description": "Admin panel with angularjs 1.5",
+    "description": "Admin panel with angularjs 1.8",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
             "name": "emniis",
-            "email": "contact@emniis.com"
+            "email": "aurelle.meless@gmail.com"
         }
     ],
     "require": {
